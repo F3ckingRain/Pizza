@@ -80,7 +80,7 @@ const CartTop = () => {
                     />
                 </svg>
 
-                <span onClick={() => removeAll()}>Очистить корзину</span>
+                <span onClick={() => removeAll()} style = {{fontSize: '20px'}}>Очистить корзину</span>
             </div>
         </div>
     );

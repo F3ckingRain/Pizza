@@ -14,10 +14,10 @@ export const EmptyCart = () => {
                             src={logoSvg}
                             alt="Pizza logo"
                         />
-                        <div>
+                        <Link to = '/'>
                             <h1>React Pizza</h1>
-                            <p>самая вкусная пицца во вселенной</p>
-                        </div>
+                            <p>Cамая вкусная пицца во вселенной</p>
+                        </Link>
                     </div>
                     <div className="header__cart">
                         <div className="button button--cart">

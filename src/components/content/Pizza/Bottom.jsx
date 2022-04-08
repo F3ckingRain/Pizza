@@ -14,9 +14,9 @@ const Bottom = ({ price, taste, name, radius, count, number }) => {
         });
     };
     return (
-        <div className="pizza-block__bottom">
+        <div className="pizza-block__bottom" >
             <div className="pizza-block__price">от {price} ₽</div>
-            <div className="button button--outline button--add">
+            <div className="button button--outline button--add" onClick={() => addPizza()}>
                 <svg
                     width="12"
                     height="12"
@@ -29,7 +29,7 @@ const Bottom = ({ price, taste, name, radius, count, number }) => {
                         fill="white"
                     />
                 </svg>
-                <span onClick={() => addPizza()}>Добавить</span>
+                <span>Добавить</span>
                 <i>{count}</i>
             </div>
         </div>

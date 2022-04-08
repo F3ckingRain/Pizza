@@ -11,9 +11,11 @@ export const CartHeader = () => {
             <div className="container">
                 <div className="header__logo">
                     <img width="38" src={logoSvg} alt="Pizza logo" />
-                    <div>
+                    <div >
+                        <Link to = '/'>
                         <h1>React Pizza</h1>
                         <p>Самая вкусная пицца во вселенной</p>
+                        </Link>
                     </div>
                 </div>
                 <div className="header__cart">
