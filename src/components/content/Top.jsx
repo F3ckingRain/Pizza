@@ -1,11 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import PizzaFilter from '../PizzaFilter';
 import Categories from '../UI/Categories';
-import MyLi from '../UI/MyLi';
 
 const Top = () => {
+    const [state, setState] = useState(true);
+
+    const sortType = useSelector((state) => state.filterReducer.type);
+
+    const sortArray = ['популярности', 'цене', 'алфавиту'];
+
+    const sortUp = () => {
+        state === true ? setState(false) : setState(true);
+    };
+    const dispatch = useDispatch();
+    const sortDown = () => { 
+        setState(true);
+    }
+
+    const makeSort = (name) => {
+        if (name === 'популярности') {
+            dispatch({
+                type: `SORT_PIZZAS_BY_POPULARITY`,
+                payload: name
+            });
+        } else if (name === 'цене') {
+            dispatch({ type: `SORT_PIZZAS_BY_PRICE`, payload: name });
+        } else {
+            dispatch({
+                type: `SORT_PIZZAS_BY_ALPHABET`,
+                payload: name
+            });
+        }
+    };
+
     return (
         <div className="content__top">
-            <Categories/>
+            <Categories />
             <div className="sort">
                 <div className="sort__label">
                     <svg
@@ -21,14 +52,14 @@ const Top = () => {
                         />
                     </svg>
                     <b>Сортировка по:</b>
-                    <span>популярности</span>
+                    <span onClick={() => sortUp()}>{sortType}</span>
                 </div>
-                <div className="sort__popup">
-                    <ul>
-                        <MyLi title='популярности' className='active'></MyLi>
-                        <MyLi title='цене'></MyLi>
-                        <MyLi title='алфавиту'></MyLi>
-                    </ul>
+                <div
+                    className="sort__popup"
+                    hidden={state === true ? true : false}
+                    onClick = {() => sortDown()}
+                >
+                    <PizzaFilter arr={sortArray} sort={makeSort} />
                 </div>
             </div>
         </div>

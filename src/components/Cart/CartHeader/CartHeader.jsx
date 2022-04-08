@@ -1,9 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import logoSvg from '../assets/img/pizza-logo.svg';
-
-const Header = () => {
+import logoSvg from '../../../assets/img/pizza-logo.svg';
+export const CartHeader = () => {
     const count = useSelector((state) => state.countReducer.count);
     const price = useSelector((state) => state.countReducer.price);
 
@@ -18,7 +17,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="header__cart">
-                    <Link to="cart" className="button button--cart">
+                    <Link to="/" className="button button--cart">
                         <span>{price} ₽</span>
                         <div className="button__delimiter"></div>
                         <svg
@@ -57,5 +56,3 @@ const Header = () => {
         </div>
     );
 };
-
-export default Header;

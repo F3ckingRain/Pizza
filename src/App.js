@@ -1,10 +1,15 @@
 import React from 'react';
-import Wrapper from './components/Wrapper.jsx';
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import Cart from './pages/Cart.jsx';
 
 function App() {
     return (
         <div className="App">
-            <Wrapper />
+            <Routes>
+                <Route path="" element={<Home />} />
+                <Route path="/cart" element={<Cart/>}/>
+            </Routes>
         </div>
     );
 }

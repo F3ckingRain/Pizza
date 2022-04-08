@@ -1,20 +1,21 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-
-
-const Bottom = (props) => {
-
-    const dispatch = useDispatch()
-    const type = 'ADD_PIZZA' + props.number
-
+const Bottom = ({ price, taste, name, radius, count, number }) => {
+    const dispatch = useDispatch();
     const addPizza = () => {
-        dispatch({type: type , payload: props.price})
-    }
-
+        dispatch({
+            type: `ADD_Pizza_${name}_${taste}_${radius}cm`,
+            payload: { count: 1, price: price }
+        });
+        dispatch({
+            type: `ADD_PIZZA${number}`,
+            payload: { count: 1, price: price }
+        });
+    };
     return (
-        <div className='pizza-block__bottom'>
-            <div className="pizza-block__price">от {props.price} ₽</div>
+        <div className="pizza-block__bottom">
+            <div className="pizza-block__price">от {price} ₽</div>
             <div className="button button--outline button--add">
                 <svg
                     width="12"
@@ -29,7 +30,7 @@ const Bottom = (props) => {
                     />
                 </svg>
                 <span onClick={() => addPizza()}>Добавить</span>
-                <i>{props.count}</i>
+                <i>{count}</i>
             </div>
         </div>
     );

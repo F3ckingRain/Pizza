@@ -1,17 +1,27 @@
 import React from 'react';
-import MyLi from './MyLi';
+import PizzaFilter from '../PizzaFilter';
+import { useDispatch } from 'react-redux';
 
 const Categories = () => {
+
+    const dispatch = useDispatch();
+
+    const makeSort = (name) => {
+        dispatch({type: 'SORT_PIZZAS', payload: name})
+    }
+
+    const arr = [
+        'Все',
+        'Мясные',
+        'Вегетарианские',
+        'Гриль',
+        'Острые',
+        'Закрытые'
+    ];
+
     return (
         <div className="categories">
-            <ul>
-                <MyLi className="active" title="Все"></MyLi>
-                <MyLi title="Мясные"></MyLi>
-                <MyLi title="Вегетарианская"></MyLi>
-                <MyLi title="Гриль"></MyLi>
-                <MyLi title="Острые"></MyLi>
-                <MyLi title="Закрытые"></MyLi>
-            </ul>
+            <PizzaFilter arr={arr} sort = {makeSort}/>
         </div>
     );
 };

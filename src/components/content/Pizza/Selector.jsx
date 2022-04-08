@@ -1,27 +1,21 @@
 import React from 'react';
-import MyLi from '../../UI/MyLi';
+import RadiusSelector from '../../UI/RadiusSelector';
+import TypeSelector from '../../UI/TypeSelector';
+import { useDispatch } from 'react-redux';
 
-const Selector = (props) => {
+const Selector = ({ radius, taste, name }) => {
+    const dispatch = useDispatch();
+
+    const sort = (name, taste, radius) => {
+        dispatch({
+            type: `Pizza_${name}_${taste}_${radius}cm`
+        });
+    };
 
     return (
         <div className="pizza-block__selector">
-            <ul>
-                <MyLi 
-                    className="active" 
-                    title="тонкое">
-                </MyLi>
-                <MyLi title="традиционное"></MyLi>
-            </ul>
-            <ul>
-                <MyLi
-                    
-                    className="active"
-                    title={props.radius_1}
-                >
-                </MyLi>
-                <MyLi  title={props.radius_2}></MyLi>
-                <MyLi  title={props.radius_3}></MyLi>
-            </ul>
+            <TypeSelector sort={sort} name={name} radius={radius} />
+            <RadiusSelector sort={sort} name={name} taste={taste} />
         </div>
     );
 };
